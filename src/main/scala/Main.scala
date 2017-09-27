@@ -1,4 +1,4 @@
-object MyApp extends App {
+object Main extends App {
 
   type Row = Vector[Option[String]]
   type Table = List[Row]
