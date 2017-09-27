@@ -3,7 +3,7 @@ object Main extends App {
   type Row = Vector[Option[String]]
   type Table = List[Row]
 
-  val fragments: Table = Json.extract[List[Row]]("input2", VectorSerializer)
+  val fragments: Table = Json.extract[List[Row]]("input", VectorSerializer)
 
   def legsAggregations[T](fragments: Table)(job: (Array[String]) => T): List[T] = {
 
@@ -26,7 +26,7 @@ object Main extends App {
           if f.head.isDefined
         } yield
           combinations(fs.filter(_.head.isEmpty), f)
-        res.flatten.distinct
+        fs.filter(_.forall(_.isDefined)).union(res.flatten.distinct)
       } else {
         val joins = fs.collect {
           case row if isValidPair(agr, row) => join(agr, row)
