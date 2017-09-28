@@ -1,3 +1,5 @@
+import json.{Json, VectorSerializer}
+
 object Main extends App {
 
   type Row = Vector[Option[String]]
@@ -53,6 +55,7 @@ object Main extends App {
     data
   }
 
-  println(result.mkString("\n"))
+  Json.write(result, "output")
+  //println(result.mkString("\n"))
 
 }

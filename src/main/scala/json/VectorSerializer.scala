@@ -1,3 +1,5 @@
+package json
+
 import org.json4s.JsonAST.{JArray, JNull, JString}
 import org.json4s.{CustomSerializer, JValue}
 
