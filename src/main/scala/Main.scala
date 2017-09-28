@@ -44,7 +44,12 @@ object Main extends App {
       }
     }
 
-    combinations(fragments).map(_.map(_.get).toArray).map(job)
+    val result = combinations(fragments)
+
+    //json
+    Json.write(result, "output")
+
+    result.map(_.map(_.get).toArray).map(job)
 
   }
 
@@ -55,7 +60,7 @@ object Main extends App {
     data
   }
 
-  Json.write(result, "output")
+  //Json.write(result, "output")
   //println(result.mkString("\n"))
 
 }
